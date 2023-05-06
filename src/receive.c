@@ -417,8 +417,9 @@ static void wg_packet_consume_data_done(struct wg_peer *peer,
 					       skb);
 	wg_peer_put(routed_peer); /* We don't need the extra reference. */
 
+	/* Let us just ignore dishonest peers for now
 	if (unlikely(routed_peer != peer))
-		goto dishonest_packet_peer;
+		goto dishonest_packet_peer; */
 
 	napi_gro_receive(&peer->napi, skb);
 	update_rx_stats(peer, message_data_len(len_before_trim));
